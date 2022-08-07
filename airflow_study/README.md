@@ -7,7 +7,7 @@ linux os
 ```shell
 配置airflow的家目录
 export airflow_home = /Users/danny/airflow
-install 'apache-airflow[postgres,google]==2.3.3' --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.3.3/constraints-3.7.txt"
+pip3 install 'apache-airflow[postgres,google]==2.3.3' --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.3.3/constraints-3.7.txt"
 ```
 
 ### 新建后端 MySQL 库 airflow_db
@@ -18,7 +18,7 @@ ALTER DATABASE airflow SET READ_COMMITTED_SNAPSHOT ON;
 
 ### 修改 airflow.cfg 中数据库连接url 
 ```shell
-默认存储在sqlite, 要想改mysql作为元数据库，则修改为下面
+默认存储在sqlite, 要想改mysql作为元数据库, 则修改为下面
 sql_alchemy_conn = mysql+mysqlconnector://root:123456@127.0.0.1:3306/airflow_db?charset=utf8mb4
 ```
 
