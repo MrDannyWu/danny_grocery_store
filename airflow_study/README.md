@@ -5,6 +5,8 @@ linux os
 ```
 ### 通过pip3安装
 ```shell
+配置airflow的家目录
+export airflow_home = /Users/danny/airflow
 install 'apache-airflow[postgres,google]==2.3.3' --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.3.3/constraints-3.7.txt"
 ```
 
