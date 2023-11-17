@@ -1,0 +1,34 @@
+#!/bin/bash
+# cluster file distribution
+# generate ip_list.txt for xsync
+# cat ip_list.txt
+# 192.168.1.100
+# 192.168.1.101
+# 192.168.1.102
+
+# usage
+# xsync [file or dir]
+
+IPS=/opt/ip_list.txt
+if [ $# -lt 1 ]
+then
+  echo Not Enough Arguement!
+  exit;
+fi
+
+for host in $(cat $IPS)
+do
+  echo ====================  $host  ====================
+  for file in $@
+  do
+    if [ -e $file ]
+    then
+      pdir=$(cd -P $(dirname $file); pwd)
+      f_name=$(basename $file)
+      ssh $host "mkdir -p $pdir"
+      rsync -av $pdir/$f_name $host:$pdir
+    else
+      echo $file does not exists!
+    fi
+  done
+done

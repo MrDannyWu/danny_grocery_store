@@ -1,13 +1,16 @@
 #!/bin/bash
 # bath_ssh_no_pass_login.sh
-# generate ip_list.txt for bath_ssh_no_pass_login.sh
-# cat ip_list.txt
+# generate /opt/ip_list.txt for bath_ssh_no_pass_login.sh
+# cat /opt/ip_list.txt
 # 192.168.1.100
 # 192.168.1.101
 # 192.168.1.102
 
+# usage
+# bath_ssh_no_pass_login.sh [password]
+
 yum install expect -y
-IPS=./ip_list.txt
+IPS=/opt/ip_list.txt
 PASSWD=$1
 
 if [ ! -n "$PASSWD" ]; then

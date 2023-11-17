@@ -1,0 +1,17 @@
+#! /bin/bash
+# cluster command execution
+# generate ip_list.txt for xcall
+# cat ip_list.txt
+# 192.168.1.100
+# 192.168.1.101
+# 192.168.1.102
+
+# usage
+# xcall [command]
+
+IPS=/opt/ip_list.txt
+for i in $(cat $IPS)
+do
+    echo --------- $i ----------
+    ssh $i "$*"
+done
